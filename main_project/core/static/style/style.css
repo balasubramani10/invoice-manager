@@ -1,0 +1,117 @@
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8f9fa;
+  }
+  .sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #dee2e6;
+    min-height: 100vh;
+  }
+  .sidebar .nav-link {
+    color: #333;
+    font-weight: 500;
+  }
+  .sidebar .nav-link.active {
+    background-color: #f0f0f0;
+    color: #007bff;
+  }
+  .topbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+  }
+  .content {
+    padding: 2rem;
+  }
+  .form-section {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+    .sidebar.show {
+      display: block;
+      position: absolute;
+      z-index: 1050;
+      top: 0;
+      bottom: 0;
+      background-color: white;
+      width: 250px;
+      padding: 1rem;
+      border-right: 1px solid #dee2e6;
+    }
+  }
+  
+
+  /* Sidebar Styling */
+.sidebar {
+    background-color: #1f2937; /* Dark navy */
+    height: 100vh;
+    position: fixed;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+    width: 250px;
+    left: 0;
+    top: 0;
+    color: #fff;
+  }
+  
+  .sidebar h4 {
+    color: #fff;
+  }
+  
+  .sidebar .nav-link {
+    color: #cbd5e0;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 0.375rem;
+    transition: background 0.2s ease;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background-color: #374151;
+    color: #fff;
+  }
+  
+  /* Responsive: Hide sidebar on mobile by default */
+  @media (max-width: 768px) {
+    .sidebar {
+      left: -260px;
+      position: fixed;
+    }
+  
+    .sidebar.show {
+      left: 0;
+    }
+  
+    .main-content {
+      margin-left: 0 !important;
+    }
+  }
+  
+  /* Main content pushes right of sidebar */
+  .main-content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  /* Topbar and Form Section Tweaks */
+  .topbar {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .form-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  
