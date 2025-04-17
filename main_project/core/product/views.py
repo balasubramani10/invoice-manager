@@ -3,7 +3,10 @@ from .models import Product
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='login')
 def add_product(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -27,7 +30,7 @@ def add_product(request):
 
     return render(request, 'add_product.html')
 
-
+@login_required(login_url='login')
 def edit_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     if request.method == "POST":
@@ -46,12 +49,13 @@ def edit_product(request, pk):
             product.save()
 
             messages.success(request, "Product updated successfully!")
-            return redirect('view_products')  # Redirect to product list after updating
+            return redirect('view_products') 
         else:
             messages.error(request, "Please fill all required fields.")
 
     return render(request, 'edit_product.html', {'product': product})
 
+@login_required(login_url='login')
 def view_products(request):
     search_query = request.GET.get('q', '')
     products = Product.objects.all()
@@ -68,9 +72,9 @@ def view_products(request):
         'search_query': search_query,
     })
 
-
+@login_required(login_url='login')
 def delete_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     messages.success(request, "Product deleted successfully.")
-    return redirect('view_products')  # Update this to your correct view name
+    return redirect('view_products')

@@ -2,7 +2,10 @@ from .models import Client
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required(login_url='login')
 def add_client(request):
     if request.method == 'POST':
         # Handle form submission
@@ -25,6 +28,9 @@ def add_client(request):
 
     return render(request, 'add_client.html')
 
+
+
+@login_required(login_url='login')
 def view_clients(request):
     search_query = request.GET.get('search', '')
     clients = Client.objects.all()
@@ -41,6 +47,8 @@ def view_clients(request):
         'search_query': search_query,
     })
 
+
+@login_required(login_url='login')
 def edit_client(request, pk):
     client = get_object_or_404(Client, pk=pk)
     if request.method == 'POST':
@@ -61,6 +69,8 @@ def edit_client(request, pk):
 
     return render(request, 'edit_client.html', {'client': client})
 
+
+@login_required(login_url='login')
 def delete_client(request, pk):
     client = get_object_or_404(Client, pk=pk)
     client.delete()
